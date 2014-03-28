@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140328012231) do
+ActiveRecord::Schema.define(version: 20140328015901) do
+
+  create_table "matches", force: true do |t|
+    t.string   "title"
+    t.string   "Lpic"
+    t.string   "Ltitle"
+    t.string   "Rpic"
+    t.string   "Rtitle"
+    t.integer  "Lvotes"
+    t.integer  "Rvotes"
+    t.boolean  "approved"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "name"

@@ -2,3 +2,28 @@
 <h2> I haven't made it yet </h2>
 <h2> It will have an alternate page to view if you are not signed in </h2>
 <h2> The matches class will be linked like the users class, this page will be matches#new</h2>
+
+
+<% provide(:title, 'Create') %>
+<h1>Create a Match Up!</h1>
+
+<div class = "row">
+	<div class = "span6 offset3">
+		
+		<%= form_for (@match) do |f| %>
+		<%= render 'shared/error_messages' %>
+			<%= f.label :Lpic %>
+			<%= f.text_field :Lpic %>
+			<%= f.label :Rpic %>
+			<%= f.text_field :Rpic %>
+			<%= f.label :Ltitle %>
+			<%= f.label :Ltitle %>
+			<%= f.label :Rtitle %>
+			<%= f.label :Rtitle %>
+
+
+			<%= f.submit "Create!", 
+				      class: "btn btn-large btn-primary" %>
+		<% end %>
+	</div>
+</div>
