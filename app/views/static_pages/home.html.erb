@@ -1,5 +1,9 @@
 <% @approvedMatches = Match.where(:approved => true) %>
 <% index = rand(0..(@approvedMatches.count - 1)) %>
+
+<% if !signed_in? %>
+	<p id = "banner"> Sign up to create your own matches! </p>
+<%end%>
 <div id = "background">
 	<p id = "matchTitle"> Best <%= @approvedMatches[index].matchTitle %> </p>
 	<div id = "leftField">
