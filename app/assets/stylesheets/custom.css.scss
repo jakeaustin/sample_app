@@ -160,6 +160,22 @@ p {
 
 }
 
+/* dev page buttons */
+#approve {
+	float: left;
+	font-size: 2em;
+	background-color: green;
+	height: 60px;
+	width: 40%;
+}
+#delete {
+	float: right;
+	font-size: 2em;
+	background-color: red;
+	height: 60px;
+	width: 40%;
+}
+
 /* header */
 
 #logo {
