@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140328015901) do
+ActiveRecord::Schema.define(version: 20140501154323) do
 
   create_table "matches", force: true do |t|
-    t.string   "title"
+    t.string   "matchTitle"
     t.string   "Lpic"
     t.string   "Ltitle"
     t.string   "Rpic"

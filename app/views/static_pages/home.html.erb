@@ -1,18 +1,25 @@
-<h1> This page will actually be the matchup view (linked to matchup#number)</h1>
+<% @approvedMatches = Match.where(:approved => true) %>
+<% index = rand(0..(@approvedMatches.count - 1)) %>
 <div id = "background">
+	<p id = "matchTitle"> Best <%= @approvedMatches[index].matchTitle %> </p>
 	<div id = "leftField">
-		<p id = "leftName">name followed by image tag Limage</p>
-		<div class = "image"></div>
+		<p id = "leftName"><%= @approvedMatches[index].Ltitle %></p>
+		<div class = "image"><img src ="<%= @approvedMatches[index].Lpic %>"></div>
 		<div id = "Lstats"> 
-			<p> some % and total votes </p>
+			<p> <%= @approvedMatches[index].Lvotes * 100 / 
+				(@approvedMatches[index].Lvotes + @approvedMatches[index].Rvotes) %>
+			%<br>
+			Total Votes: <%= @approvedMatches[index].Lvotes %>
+			</p>
 		</div>
 	</div>
-
 	<div id = "rightField">
-		<p id = "rightName">name followed by image tag Rimage</p>
-		<div class = "image"></div>
+		<p id = "rightName"><%=  @approvedMatches[index].Rtitle %></p>
+		<div class = "image"><img src = "<%= @approvedMatches[index].Rpic %>"></div>
 		<div id = "Rstats"> 
-			<p> some % and total votes </p>
+			<p><%= @approvedMatches[index].Rvotes * 100 /
+				( @approvedMatches[index].Lvotes +  @approvedMatches[index].Rvotes) %> %<br>
+				Total Votes: <%=  @approvedMatches[index].Rvotes %> </p>
 		</div>
 	</div>
 </div>

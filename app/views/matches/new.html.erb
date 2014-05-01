@@ -5,6 +5,8 @@
 	<div class = "span6 offset3">
 		
 		<%= form_for (@match) do |f| %>
+			<%= f.label :matchTitle %>
+			<%= f.text_field :matchTitle %>
 			<%= f.label :Lpic %>
 			<%= f.text_field :Lpic %>
 			<%= f.label :Rpic %>

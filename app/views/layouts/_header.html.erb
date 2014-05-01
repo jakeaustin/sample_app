@@ -4,7 +4,8 @@
 			  <%= link_to "sample app", root_path, id: "logo" %>
 			  <nav>
 			     <ul class="nav pull-right">
-		   		  <li><%= link_to "Home", root_path %></li>
+				     <li><%= link_to "Home", root_path %></li>
+				     <li><%= link_to "Devs", about_path%></li>
 			<li>
 				  <%if signed_in? %>
 				  <%= link_to "create", create_path %>
