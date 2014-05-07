@@ -5,20 +5,45 @@
 	<div class = "span6 offset3">
 		
 		<%= form_for (@match) do |f| %>
+
+			<%if @match.errors.any? %>
+				<div id ="error_explanation">
+				<div class="alert alert-error">
+			the form contains <%=pluralize(@match.errors.count, "error") %>.
+			</div>
+			<ul>
+			<% @match.errors.full_messages.each do |msg| %>
+				<li>* <%= msg %> </li>
+			<% end %>
+			</ul>
+			</div>
+			<% end %>
+  
+	
+  			<div class = "field">
 			<%= f.label :matchTitle %>
 			<%= f.text_field :matchTitle %>
+			</div>
+			<div class = "field">
 			<%= f.label :Lpic %>
 			<%= f.text_field :Lpic %>
+			</div>
+			<div class = "field">
 			<%= f.label :Rpic %>
 			<%= f.text_field :Rpic %>
+			</div>
+			<div class = "field">
 			<%= f.label :Ltitle %>
 			<%= f.text_field :Ltitle %>
+			</div>
+			<div class = "field">
 			<%= f.label :Rtitle %>
 			<%= f.text_field :Rtitle %>
-
-
+			</div>
+			<div class = "actions">
 			<%= f.submit "Create!", 
-				      class: "btn btn-large btn-primary" %>
+				class: "btn btn-large btn-primary" %>
+			</div>
 		<% end %>
 	</div>
 </div>

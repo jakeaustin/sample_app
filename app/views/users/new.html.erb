@@ -3,21 +3,39 @@
 
 <div class = "row">
 	<div class = "span6 offset3">
+	
+	
 		
 		<%= form_for (@user) do |f| %>
-		<%= render 'shared/error_messages' %>
+		
+		
+			<% if @user.errors.any? %>
+    			<div id="error_explanation"></div>
+  			<% end %>	
+  
+  
+ 	        	<%= render 'shared/error_messages' %>
+			<div class = "field">
 			<%= f.label :name %>
 			<%= f.text_field :name %>
+			</div>
+			<div class = "field">
 			<%= f.label :email %>
 			<%= f.text_field :email %>
+			</div>
 			<p>Email must be a Tufts email address</p>
+			<div class = "field">
 			<%= f.label :password %>
 			<%= f.password_field :password %>
+			</div>
+			<div class = "field">
 			<%= f.label :password_confirmation, "Confirmation" %>
 			<%= f.password_field :password_confirmation %>
-
+			</div>
+			<div class = "actions">
 			<%= f.submit "Start Voting!", 
 				      class: "btn btn-large btn-primary" %>
+			</div>      
 		<% end %>
 	</div>
 </div>

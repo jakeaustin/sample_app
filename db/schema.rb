@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140501154323) do
+ActiveRecord::Schema.define(version: 20140507022225) do
 
   create_table "matches", force: true do |t|
     t.string   "matchTitle"
@@ -22,6 +22,11 @@ ActiveRecord::Schema.define(version: 20140501154323) do
     t.integer  "Lvotes"
     t.integer  "Rvotes"
     t.boolean  "approved"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sessions", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
