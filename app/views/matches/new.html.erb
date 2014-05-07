@@ -1,6 +1,5 @@
 <% provide(:title, 'Create') %>
 <h1>Create a Match Up!</h1>
-
 <div class = "row">
 	<div class = "span6 offset3">
 		
@@ -18,28 +17,29 @@
 			</ul>
 			</div>
 			<% end %>
-  
-	
+  			<p>Images must be .jpg from imgur.com</p>
+				
   			<div class = "field">
-			<%= f.label :matchTitle %>
+			<%= f.label :matchTitle, 'Best ...' %>
 			<%= f.text_field :matchTitle %>
-			</div>
+			</div>	
 			<div class = "field">
-			<%= f.label :Lpic %>
-			<%= f.text_field :Lpic %>
-			</div>
-			<div class = "field">
-			<%= f.label :Rpic %>
-			<%= f.text_field :Rpic %>
-			</div>
-			<div class = "field">
-			<%= f.label :Ltitle %>
+			<%= f.label :Ltitle, 'Contender #1' %>
 			<%= f.text_field :Ltitle %>
 			</div>
 			<div class = "field">
-			<%= f.label :Rtitle %>
+			<%= f.label :Rtitle, 'Contender #2' %>
 			<%= f.text_field :Rtitle %>
 			</div>
+			<div class = "field">
+			<%= f.label :Lpic, 'Image #1' %>
+			<%= f.text_field :Lpic %>
+			</div>
+			<div class = "field">
+			<%= f.label :Rpic, 'Image #2' %>
+			<%= f.text_field :Rpic %>
+			</div>
+			
 			<div class = "actions">
 			<%= f.submit "Create!", 
 				class: "btn btn-large btn-primary" %>

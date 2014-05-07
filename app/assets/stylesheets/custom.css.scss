@@ -61,11 +61,23 @@ p {
 
 #banner {
 	background-color: green;
-	border: 2px solid black;
+	border: 4px solid #005000;
 	border-radius: 30px;
-	color: white;
 	text-align: center;
-	height: 40px;
+	height: 30px;
+	width: 50%;
+	margin-left: 25%;
+	a:link, a:visited {
+		text-decoration: none;
+		color: white;
+		font-weight: bold;
+		font-size: 25px;
+	}
+	a:hover {
+		color: red;
+		font-weight: bold;
+		font-size: 25px;
+	}
 }
 
 #background {
@@ -282,3 +294,15 @@ input {
   font-size: 12px;
   list-style: square;
 }
+
+.flash-message {
+	border: 4px solid cyan;
+	background-color: #000048;
+	color: white;
+	float: center;
+	text-align: center;
+	font-weight: bold;
+	width: 20%;
+	margin-left: 40%;
+}
+

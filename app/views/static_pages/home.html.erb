@@ -1,8 +1,13 @@
 <% @approvedMatches = Match.where(:approved => true) %>
 <% index = rand(0..(@approvedMatches.count - 1)) %>
 
+<% if flash[:notice] %>
+	<div class = "flash-message"><%= flash[:notice] %></div>
+<% end %>
 <% if !signed_in? %>
-	<p id = "banner"> Sign up to create your own matches! </p>
+	<div id = "banner">
+		<%= link_to "Sign Up to create your own matches!", signup_path %>
+	</div>
 <%end%>
 <div id = "background">
 	<p id = "matchTitle"> Best <%= @approvedMatches[index].matchTitle %> </p>

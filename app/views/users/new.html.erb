@@ -14,18 +14,17 @@
   			<% end %>	
   
   
- 	        	<%= render 'shared/error_messages' %>
+			<%= render 'shared/error_messages' %>
 			<div class = "field">
-			<%= f.label :name %>
+			<%= f.label :name, 'Your Name' %>
 			<%= f.text_field :name %>
 			</div>
 			<div class = "field">
-			<%= f.label :email %>
+			<%= f.label :email, 'Your Tufts Email (You won\'t be hassled / spammed)' %>
 			<%= f.text_field :email %>
 			</div>
-			<p>Email must be a Tufts email address</p>
 			<div class = "field">
-			<%= f.label :password %>
+			<%= f.label :password, 'Your password (minimum 6 characters)' %>
 			<%= f.password_field :password %>
 			</div>
 			<div class = "field">
@@ -35,7 +34,7 @@
 			<div class = "actions">
 			<%= f.submit "Start Voting!", 
 				      class: "btn btn-large btn-primary" %>
-			</div>      
+		      </div>     
 		<% end %>
 	</div>
 </div>
