@@ -1,0 +1,28 @@
+<% @NOTapprovedMatches = Match.where(:approved => false) %>
+<% index = rand(0..(@NOTapprovedMatches.count - 1)) %>
+<div id = "background">
+	<p id = "matchTitle"> Best <%= @NOTapprovedMatches[index].matchTitle %> </p>
+	<div id = "leftField">
+		<p id = "leftName"><%= @NOTapprovedMatches[index].Ltitle %></p>
+		<div class = "image"><img src ="<%= @NOTapprovedMatches[index].Lpic %>"></div>
+		<div id = "Lstats"> 
+			<p> <%= @NOTapprovedMatches[index].Lvotes * 100 / 
+				(@NOTapprovedMatches[index].Lvotes + @NOTapprovedMatches[index].Rvotes) %>
+			%<br>
+			Total Votes: <%= @NOTapprovedMatches[index].Lvotes %>
+			</p>
+		</div>
+	</div>
+	<div id = "rightField">
+		<p id = "rightName"><%=@NOTapprovedMatches[index].Rtitle %></p>
+		<div class = "image"><img src = "<%=@NOTapprovedMatches[index].Rpic %>"></div>
+		<div id = "Rstats"> 
+			<p><%=@NOTapprovedMatches[index].Rvotes * 100 /
+				(@NOTapprovedMatches[index].Lvotes + @NOTapprovedMatches[index].Rvotes) %> %<br>
+				Total Votes: <%= @NOTapprovedMatches[index].Rvotes %> </p>
+		</div>
+	</div>
+</div>
+<div id = "approve">Approve</div>
+<div id = "delete">Delete</div>
+ 

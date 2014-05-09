@@ -1,0 +1,4 @@
+class AddDevTokenToUsersTwo < ActiveRecord::Migration
+  def change
+  end
+end

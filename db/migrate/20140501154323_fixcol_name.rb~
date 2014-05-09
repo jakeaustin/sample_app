@@ -1,0 +1,4 @@
+class FixcolName < ActiveRecord::Migration
+  def change
+  end
+end

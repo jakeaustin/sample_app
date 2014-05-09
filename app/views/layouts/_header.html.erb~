@@ -1,0 +1,35 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+	  <div class = "navbar-inner">
+		  <div class = "container">
+			  <%= link_to "sample app", root_path, id: "logo" %>
+			  <nav>
+			     <ul class="nav pull-right">
+				     <li><%= link_to "Home", root_path %></li>
+				    
+				     <li>
+					<%if signed_in? %>
+				  	<%= link_to "create", "matches#new" %>
+				  	<%else%>
+					<%= link_to "Sign Up", signup_path %>
+					<% end %>
+				    </li>
+				
+				
+				
+			<li>
+			<% if signed_in? %> 
+		        	<%=link_to "Sign out", signout_path %>
+			<% else %>
+				<%= link_to "Sign in", signin_path %>
+				</li>
+			<%end%>
+			<% if session[:uid] != nil %>	
+				<%if User.find(session[:uid]).developer == true%>
+					<li><%= link_to "Devs", about_path%></li>
+				<%end%>
+			<%end%>
+			     </ul>
+			  </nav>
+		  </div>
+	  </div>
+</header>
