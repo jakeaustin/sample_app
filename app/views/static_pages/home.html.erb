@@ -1,6 +1,7 @@
 <% @approvedMatches = Match.where(:approved => true) %>
 <% index = rand(0..(@approvedMatches.count - 1)) %>
 
+
 <% if flash[:notice] %>
 	<div class = "flash-message"><%= flash[:notice] %></div>
 <% end %>
