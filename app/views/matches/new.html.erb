@@ -11,8 +11,14 @@
 			the form contains <%=pluralize(@match.errors.count, "error") %>.
 			</div>
 			<ul>
-			<% @match.errors.full_messages.each do |msg| %>
-				<li>* <%= msg %> </li>
+			<% error_msg = Hash.new("") %>
+			<% error_msg[:Lpic] = "Image #1 " %>
+			<% error_msg[:Rpic] = "Image #2 " %>
+			<% error_msg[:Ltitle] = "Contender #1 " %>
+			<% error_msg[:Rtitle] = "Contender #2 " %>
+			<% error_msg[:matchTitle] = "Best... " %>
+			<% @match.errors.each do |att, msg| %>
+				<li>* <%=error_msg[att] +  msg %> </li>
 			<% end %>
 			</ul>
 			</div>
@@ -32,7 +38,7 @@
 			<%= f.text_field :Rtitle %>
 			</div>
 			<div class = "field">
-			<%= f.label :Lpic, 'Image #1' %>
+			<%= f.label :Lpic,'Image #1' %>
 			<%= f.text_field :Lpic %>
 			</div>
 			<div class = "field">
