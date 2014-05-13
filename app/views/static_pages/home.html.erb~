@@ -1,4 +1,6 @@
-<% match = Match.fetch_approved %>
+<% content_for :title, "Vote!" %>
+<% @approvedMatches = Match.where(:approved => true) %>
+<% index = rand(0..(@approvedMatches.count - 1)) %>
 
 
 <% if flash[:notice] %>
@@ -10,7 +12,7 @@
 	</div>
 <%end%>
 <div id = "background">
-	<p id = "matchTitle"> Best <%= match.matchTitle %> </p>
+	<p id = "matchTitle"> Best <%= @approvedMatches[index].matchTitle %> </p>
 	<div id = "leftField">
 		<p id = "leftName"><%= @approvedMatches[index].Ltitle %></p>
 		<div class = "image"><img src ="<%= @approvedMatches[index].Lpic %>"></div>
