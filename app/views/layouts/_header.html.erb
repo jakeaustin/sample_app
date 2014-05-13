@@ -24,7 +24,7 @@
 				</li>
 			<%end%>
 			<% if session[:uid] != nil %>	
-				<%if User.find(session[:uid]).developer == true%>
+				<%if User.find(session[:uid]).developer %>
 					<li><%= link_to "Devs", about_path%></li>
 				<%end%>
 			<%end%>
