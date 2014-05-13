@@ -15,20 +15,31 @@ class MatchesController < ApplicationController
 	  end
   	end
 
-	def fetch_with_ajax
+	def get_unapproved
+		require 'json'
+		@NOTapprovedMatches = Match.where(:approved => false)
+		if @NOTapprovedMatches.count == 0
+			@match_item = {"valid" => false };
+		else
+			index = rand(0..(@NOTapprovedMatches.count - 1))
+			match = @NOTapprovedMatches[index]
+			@match_item = {"valid" => true, "id" = match.id, "Lpic" => match.Lpic, "Lpic" => match.Lpic,...
+			"Rpic" => match.Lpic, "Rtitle" => match.Rtitle, "Ltitle" => match.Ltitle, "title" => match.matchTitle}
+		end
+		respond_to do |format| 
+          format.json {render :json => @match_item}
+        end
 	end
 
 	def approve
+		@match = Match.find(params[:id])
+		@match.approved = true
+		@match.save!
 	end
 
 	def destroy
 		@match = Match.find(params[:id])
 		@match.destroy
-		respond_to do |format|
-			format.html { redirect_to about_path }
-			format.json { head :no_content }
-			format.js { render :layout => false }
-		end
 	end
 
  	private

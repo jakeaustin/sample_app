@@ -14,3 +14,53 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function){
+
+	$("#delete").click(function(){
+		var del_id = $("#matchTitle").attr("data-id");
+		$.ajax({
+			url: "/destroy",
+			type: "POST",
+			data: { id : del_id },
+			success: function(){
+				get_next();
+			}
+		});
+	});
+	$("#approve").click(function(){
+		var app_id = $("#matchTitle").attr("data-id");
+		$.ajax({
+			url: "/approve",
+			type: "POST",
+			data: { id : app_id },
+			success: function(){
+				get_next();
+			}
+		});
+		
+	});
+
+});
+
+
+function get_next(){
+	$.ajax({
+			url: "/next",
+			type: "POST",
+			success: function(result){
+				if (!result["valid"]){
+					$("#background").html("<p>All matches approved</p>");
+				}else{
+					$("#matchTitle").attr("data-id",result["id"]);
+					$("#matchTitle").html(result["title"]);
+					$("#leftName").html(result["Ltitle"]);
+					$("#rightName").html(result["Rtitle"]);
+					$("#leftField img").attr("src",result["Lpic"]);
+					$("#rightField img").attr("src",result["Rpic"]);
+				}
+			}
+		});
+
+}
+

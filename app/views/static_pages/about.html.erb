@@ -2,9 +2,10 @@
 	<p>Quit Snooping</p>
 <% else %>
 <% @NOTapprovedMatches = Match.where(:approved => false) %>
+<% if @NOTapprovedMatches.count > 0 %>
 <% index = rand(0..(@NOTapprovedMatches.count - 1)) %>
 <div id = "background">
-	<p id = "matchTitle"> Best <%= @NOTapprovedMatches[index].matchTitle %> </p>
+	<p id = "matchTitle" data-id="<%=@NOTapprovedMatches[index].id%>"> Best <%= @NOTapprovedMatches[index].matchTitle %> </p>
 	<div id = "leftField">
 		<p id = "leftName"><%= @NOTapprovedMatches[index].Ltitle %></p>
 		<div class = "image"><img src ="<%= @NOTapprovedMatches[index].Lpic %>"></div>
@@ -29,4 +30,7 @@
 <div id = "approve">Approve</div>
 <div id = "delete">Delete</div>
 <br><br> 
+<% else %>
+<p>All matches approved!</p>
+<% end %>
 <% end %>
