@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
-ruby '1.9.3'
+#ruby '1.9.3'
 #ruby-gemset=railstutorial_rails_4_0
 
+gem 'pg'
 gem 'rails', '4.0.2'
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'bcrypt-ruby', '3.1.2'
@@ -27,6 +28,6 @@ group :doc do
 end
 
 group :production do
-  gem 'pg', '0.15.1'
+  gem 'pg'
   gem 'rails_12factor', '0.0.2'
 end
