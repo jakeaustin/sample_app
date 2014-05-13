@@ -1,3 +1,6 @@
+<% if session[:uid] == nil || !User.find(session[:uid]).developer %>
+	<p>Quit Snooping</p>
+<% else %>
 <% @NOTapprovedMatches = Match.where(:approved => false) %>
 <% index = rand(0..(@NOTapprovedMatches.count - 1)) %>
 <div id = "background">
@@ -26,3 +29,4 @@
 <div id = "approve">Approve</div>
 <div id = "delete">Delete</div>
 <br><br> 
+<% end %>

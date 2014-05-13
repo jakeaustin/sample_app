@@ -1,7 +1,7 @@
 class MatchesController < ApplicationController
 	def new
 		@match = Match.new
-		@title = "create"
+		@title = "Create"
 	end
 
         def create
@@ -15,10 +15,20 @@ class MatchesController < ApplicationController
 	  end
   	end
 
-	def fetch
+	def fetch_with_ajax
 	end
 
 	def approve
+	end
+
+	def destroy
+		@match = Match.find(params[:id])
+		@match.destroy
+		respond_to do |format|
+			format.html { redirect_to about_path }
+			format.json { head :no_content }
+			format.js { render :layout => false }
+		end
 	end
 
  	private

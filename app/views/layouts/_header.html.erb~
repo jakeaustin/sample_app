@@ -8,7 +8,7 @@
 				    
 				     <li>
 					<%if signed_in? %>
-				  	<%= link_to "create", create_path %>
+				  	<%= link_to "Create", create_path %>
 				  	<%else%>
 					<%= link_to "Sign Up", signup_path %>
 					<% end %>
