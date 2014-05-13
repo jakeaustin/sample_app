@@ -15,25 +15,26 @@
 //= require turbolinks
 //= require_tree .
 
-$(document).ready(function){
+$(document).ready(function(){
 
 	$("#delete").click(function(){
 		var del_id = $("#matchTitle").attr("data-id");
 		$.ajax({
-			url: "/destroy",
+			url: "/destroy.json",
 			type: "POST",
-			data: { id : del_id },
+			data: { "id" : del_id },
 			success: function(){
 				get_next();
 			}
 		});
 	});
+	
 	$("#approve").click(function(){
 		var app_id = $("#matchTitle").attr("data-id");
 		$.ajax({
-			url: "/approve",
+			url: "/approve.json",
 			type: "POST",
-			data: { id : app_id },
+			data: { "id": app_id },
 			success: function(){
 				get_next();
 			}
@@ -46,7 +47,7 @@ $(document).ready(function){
 
 function get_next(){
 	$.ajax({
-			url: "/next",
+			url: "/next.json",
 			type: "POST",
 			success: function(result){
 				if (!result["valid"]){
