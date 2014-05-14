@@ -95,7 +95,13 @@ p {
 	font-weight: bold;
 }
 
+.borderClass {
+	border-color: #009900;
+	border-width: 5px;
+	border-style: solid;
+}
 #leftField {
+	cursor:pointer;
 	width: 45%;
 	border: 2px solid black;
 	border-radius: 30px;
@@ -109,6 +115,7 @@ p {
 }
 
 #rightField {
+	cursor:pointer;
 	width: 45%; 
 	float: right;
 	border: 2px solid black;

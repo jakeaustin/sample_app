@@ -25,6 +25,7 @@ class MatchesController < ApplicationController
 			match = @NOTapprovedMatches[index]
 			@match_item = Hash.new()
 			@match_item["valid"] = true
+			@match_item["id"] = match.id
 			@match_item["Lpic"] = match.Lpic
 			@match_item["Rpic"] = match.Rpic
 			@match_item["Ltitle"] = match.Ltitle
@@ -78,6 +79,13 @@ class MatchesController < ApplicationController
 		respond_to do |format|
 			format.json { render json: @match_item.to_json }
 		end
+	end
+
+	def leftVote
+		require 'json'
+		@match = Match.find(paramd[:id])
+		@match.Lvotes = @match.Lvotes + 1
+		@match.save!	
 	end
 
  	private
