@@ -182,6 +182,7 @@ p {
 
 /* dev page buttons */
 #approve {
+	cursor:pointer;
 	float: left;
 	font-size: 2em;
 	background-color: green;
@@ -189,6 +190,7 @@ p {
 	width: 40%;
 }
 #delete {
+	cursor:pointer;
 	float: right;
 	font-size: 2em;
 	background-color: red;
