@@ -17,8 +17,8 @@
 
 $(document).ready(function(){
 
-//	$("#Lstats").hide();
-//	$("#Rstats").hide();
+	$("#Lstats").hide();
+	$("#Rstats").hide();
 
 	$("#delete").click(function(){
 		var del_id = $("#matchTitle").attr("data-id");
@@ -45,40 +45,64 @@ $(document).ready(function(){
 		
 	});
 
-//	$("#leftField").click(function(){
-//		var match_id = $("#matchTitle").attr("data-id");
-//		$(this).addClass('borderClass');
-//		$("#Lstats").show();
-//		$("#Rstats").show();
-//		$.ajax({
-//			url: "/leftVote.json",
-//			type: "POST",
-//			data: { "id" : match_id},
-//			success: function() {
-//				new_match();
-//				$("#Lstats").hide();
-//				$("#Rstats").hide();
-//			}
-//	});
+	$("#leftField").click(function(){
+		var match_id = $("#matchTitle").attr("data-id");
+		$("#leftField").css('border', '5px solid green');
+		$("#Lstats").show();
+		$("#Rstats").show();
+		$.ajax({
+			url: "/leftVote.json",
+			type: "POST",
+			data: { "id" : match_id},
+			success: function() {
+				setTimeout(new_match, 3000);
+			}
+		});
+	});
+	$("#rightField").click(function(){
+		var match_id = $("#matchTitle").attr("data-id");
+		$("#rightField").css('border', '5px solid green');
+		$("#Lstats").show();
+		$("#Rstats").show();
+		$.ajax({
+			url: "/rightVote.json",
+			type: "POST",
+			data: { "id" : match_id},
+			success: function() {
+				setTimeout(new_match, 3000);
+			}
+		});
+	});
 });
-
 function new_match(){
 	$.ajax({
 		url: "/grab.json",
 		type: "POST",
-		sucess: function(result) {
+		success: function(result) {
 			if (!result["valid"]) {
 				$("#background").html("<p>No Matches!</p>");
 			}
 			else {
-			$("#matchTitle").attr("data-id",result["id"]);
-			$("#matchTitle").html(result["title"]);
-			$("#leftName").html(result["Ltitle"]);
-			$("#rightName").html(result["Rtitle"]);
-			$("#leftField img").attr("src",result["Lpic"]);
-			$("#rightField img").attr("src",result["Rpic"]);
-//			$("#Lstats").html();
-//			$("#Rstats").html();
+				$("#matchTitle").attr("data-id",result["id"]);
+				$("#matchTitle").html(function() {
+					return "Best " + result["title"];
+				})
+				$("#leftName").html(result["Ltitle"]);
+				$("#rightName").html(result["Rtitle"]);
+				$("#leftField img").attr("src",result["Lpic"]);
+				$("#rightField img").attr("src",result["Rpic"]);
+				$("#Lstats").html("<p>" + 
+				Math.round(result["Lvotes"]*100 /
+				(result["Lvotes"] + result["Rvotes"]))+ "%<br>"+
+				"Total Votes: " + result["Lvotes"]+"</p>");
+				$("#Rstats").html("<p>" + 
+				Math.round(result["Rvotes"]*100 / 
+				(result["Lvotes"] + result["Rvotes"]))+ "%<br>"+
+				"Total Votes: " + result["Rvotes"]+"</p>");
+				$("#leftField").css('border','5px solid black');
+				$("#rightField").css('border','5px solid black');
+				$("#Lstats").hide();
+				$("#Rstats").hide();
 			}
 		}
 	});

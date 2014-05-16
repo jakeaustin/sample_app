@@ -1,4 +1,3 @@
-<% content_for :title, "Vote!" %>
 <% @approvedMatches = Match.where(:approved => true) %>
 <% index = rand(0..(@approvedMatches.count - 1)) %>
 
@@ -12,7 +11,7 @@
 	</div>
 <%end%>
 <div id = "background">
-	<p id = "matchTitle"> Best <%= @approvedMatches[index].matchTitle %> </p>
+	<p id = "matchTitle" data-id="<%=@approvedMatches[index].id%>"> Best <%= @approvedMatches[index].matchTitle %> </p>
 	<div id = "leftField">
 		<p id = "leftName"><%= @approvedMatches[index].Ltitle %></p>
 		<div class = "image"><img src ="<%= @approvedMatches[index].Lpic %>"></div>

@@ -39,14 +39,15 @@ class MatchesController < ApplicationController
 	
 	def get_approved
 		require 'json'
-		@ApprovedMatches = Match.where(:approved => true)
-		if @ApprovedMatches.count == 0
+		@approvedMatches = Match.where(:approved => true)
+		if @approvedMatches.count == 0
 			@match_item = {"valid" => false }
 		else
-			index = rand(0..(@ApprovedMatches.count - 1))
-			match = @ApprovedMatches[index]
+			index = rand(0..(@approvedMatches.count - 1))
+			match = @approvedMatches[index]
 			@match_item = Hash.new()
 			@match_item["valid"] = true
+			@match_item["id"] = match.id
 			@match_item["Lpic"] = match.Lpic
 			@match_item["Rpic"] = match.Rpic
 			@match_item["Ltitle"] = match.Ltitle
@@ -83,9 +84,24 @@ class MatchesController < ApplicationController
 
 	def leftVote
 		require 'json'
-		@match = Match.find(paramd[:id])
+		@match = Match.find(params[:id])
 		@match.Lvotes = @match.Lvotes + 1
-		@match.save!	
+		@match.save!
+		@match_item = {"valid" => true}
+		respond_to do |format|
+			format.json {render json: @match_item.to_json }
+		end	
+	end
+	
+	def rightVote
+		require 'json'
+		@match = Match.find(params[:id])
+		@match.Rvotes = @match.Rvotes + 1
+		@match.save!
+		@match_item = {"valid" => true}
+		respond_to do |format|
+			format.json {render json: @match_item.to_json }
+		end
 	end
 
  	private

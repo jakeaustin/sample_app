@@ -10,6 +10,7 @@ SampleApp::Application.routes.draw do
   match '/destroy', to: 'matches#destroy', via: 'post'
   match '/approve', to: 'matches#approve', via: 'post'
   match '/leftVote', to: 'matches#leftVote', via: 'post'
+  match '/rightVote', to: 'matches#rightVote', via: 'post'
   match '/next', to: 'matches#get_unapproved', via: 'post'
   match '/grab', to: 'matches#get_approved', via: 'post'
   match '/about', to: 'static_pages#about', via: 'get'

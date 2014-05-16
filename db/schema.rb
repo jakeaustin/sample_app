@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20140507022225) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "matches", force: true do |t|
     t.string   "matchTitle"
     t.string   "Lpic"
@@ -41,11 +38,10 @@ ActiveRecord::Schema.define(version: 20140507022225) do
     t.datetime "updated_at"
     t.string   "password_digest"
     t.string   "remember_token"
-    t.boolean  "dev_token"
     t.boolean  "developer"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
 
 end
