@@ -1,6 +1,6 @@
 class Match < ActiveRecord::Base
 	validates_presence_of :Lpic, :Rpic, :Ltitle, :Rtitle, :matchTitle 	
-	VALID_PIC_REGEX = /(.*)\.jpg/
+	VALID_PIC_REGEX = /(.*)\.jpg/i
 	validates :Rpic, :Lpic, format: {with: VALID_PIC_REGEX}
 	after_create :default_values
 	def default_values
