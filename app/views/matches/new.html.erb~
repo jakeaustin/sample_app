@@ -12,11 +12,11 @@
 			</div>
 			<ul>
 			<% error_msg = Hash.new("") %>
-			<% error_msg[:Lpic] = "Image #1" %>
-			<% error_msg[:Rpic] = "Image #2" %>
-			<% error_msg[:Ltitle] = "Contender #1" %>
-			<% error_msg[:Rtitle] = "Contender #2" %>
-			<% error_msg[:matchTitle] = "Best..." %>
+			<% error_msg[:Lpic] = "Image #1 " %>
+			<% error_msg[:Rpic] = "Image #2 " %>
+			<% error_msg[:Ltitle] = "Contender #1 " %>
+			<% error_msg[:Rtitle] = "Contender #2 " %>
+			<% error_msg[:matchTitle] = "Best... " %>
 			<% @match.errors.each do |att, msg| %>
 				<li>* <%=error_msg[att] +  msg %> </li>
 			<% end %>
