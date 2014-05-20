@@ -55,7 +55,7 @@ $(document).ready(function(){
 			type: "POST",
 			data: { "id" : match_id},
 			success: function() {
-				setTimeout(new_match, 3000);
+				setTimeout(new_match, 1500);
 			}
 		});
 	});
@@ -69,7 +69,7 @@ $(document).ready(function(){
 			type: "POST",
 			data: { "id" : match_id},
 			success: function() {
-				setTimeout(new_match, 3000);
+				setTimeout(new_match, 1500);
 			}
 		});
 	});
